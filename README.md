@@ -13,26 +13,30 @@ The terraform script will create the following:
 
 ## Step by step procedure:
 1. Begin by [installing terraform](https://www.terraform.io/intro/getting-started/install.html)
-2. Run the command below to generate and show an execution plan -
+2. Clone this repository anywhere on your local machine. 
+  ```
+  git clone https://github.com/AviatrixSystems/AviatrixSalesDemoInfra.git
+ ```
+3. Run the command below in your local copy (in the DemoTerraform folder) to generate and show an execution plan -
   ```
   terraform plan
   ```
- 3. Run the command below to create the infrastructure -
+ 4. Run the command below to create the infrastructure -
  ```
   terraform apply
  ```
- 4. Check the AWS Console to confirm the infrastructure was created succesfully. 
- 5. ssh in to the EC2 instance named Client in us-east-1. 
- 6. Clone the Demo Application in to the EC2 instance. 
+ 5. Check the AWS Console to confirm the infrastructure was created succesfully. 
+ 6. ssh in to the EC2 instance named Client in us-east-1. 
+ 7. Clone the Demo Application in to the EC2 instance. 
   ```
   git clone https://github.com/AviatrixSystems/AviatrixSalesDemoApp.git
  ```
- 7. ssh in to the Windows EC2 instance in us-east-1 using [Microsoft Desktop Client](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) and the appropriate credentials from AWS.
- 8. Download [pingplotter](https://www.pingplotter.com/) into the Windows instance. 
+ 8. ssh in to the Windows EC2 instance in us-east-1 using [Microsoft Desktop Client](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) and the appropriate credentials from AWS.
+ 9. Download [pingplotter](https://www.pingplotter.com/) into the Windows instance. 
  
 ## Destroy infrastructure [optional]
 
-To destroy the infrastrucutre run the following command - 
+To destroy the infrastructure run the following command - 
  ```
   terraform destroy
  ```
