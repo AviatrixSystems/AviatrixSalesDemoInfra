@@ -30,6 +30,8 @@ The terraform script will create the following:
  7. Clone the Demo Application in to the EC2 instance. 
   ```
   git clone https://github.com/AviatrixSystems/AviatrixSalesDemoApp.git
+  ```
+  ```
   git clone https://github.com/AviatrixSystems/DirectConnectCostCalculator.git
  ```
  8. ssh in to the Windows EC2 instance in us-east-1 using [Microsoft Desktop Client](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) and the appropriate credentials from AWS.
