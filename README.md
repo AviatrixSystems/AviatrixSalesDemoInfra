@@ -13,7 +13,7 @@ The terraform script will create the following:
 
 ## Step by step procedure:
 1. Begin by [installing terraform](https://www.terraform.io/intro/getting-started/install.html)
-2. Clone this repository anywhere on your local machine. 
+2. Clone the following repositories anywhere on your local machine. 
   ```
   git clone https://github.com/AviatrixSystems/AviatrixSalesDemoInfra.git
  ```
@@ -30,6 +30,7 @@ The terraform script will create the following:
  7. Clone the Demo Application in to the EC2 instance. 
   ```
   git clone https://github.com/AviatrixSystems/AviatrixSalesDemoApp.git
+  git clone https://github.com/AviatrixSystems/DirectConnectCostCalculator.git
  ```
  8. ssh in to the Windows EC2 instance in us-east-1 using [Microsoft Desktop Client](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) and the appropriate credentials from AWS.
  9. Download [pingplotter](https://www.pingplotter.com/) into the Windows instance. 
