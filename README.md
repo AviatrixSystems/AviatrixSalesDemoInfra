@@ -19,6 +19,7 @@ The terraform script will create the following:
  ```
 3. Run the command below in your local copy (in the DemoTerraform folder) to generate and show an execution plan -
   ```
+  terraform get
   terraform plan
   ```
  4. Run the command below to create the infrastructure -
