@@ -17,26 +17,29 @@ The terraform script will create the following:
   ```
   git clone https://github.com/AviatrixSystems/AviatrixSalesDemoInfra.git
  ```
-3. Run the command below in your local copy (in the DemoTerraform folder) to generate and show an execution plan -
+3. Create and IAM user with admin access policy, and update the access_key and secret_key in the demo.tf file
+
+4. Run the command below in your local copy (in the DemoTerraform folder) to generate and show an execution plan -
   ```
+  terraform init
   terraform get
   terraform plan
   ```
- 4. Run the command below to create the infrastructure -
+ 5. Run the command below to create the infrastructure -
  ```
   terraform apply
  ```
- 5. Check the AWS Console to confirm the infrastructure was created succesfully. 
- 6. ssh in to the EC2 instance named Client in us-east-1. 
- 7. Clone the Demo Application in to the EC2 instance. 
+ 6. Check the AWS Console to confirm the infrastructure was created succesfully. 
+ 7. ssh in to the EC2 instance named Client in us-east-1. 
+ 8. Clone the Demo Application in to the EC2 instance. 
   ```
   git clone https://github.com/AviatrixSystems/AviatrixSalesDemoApp.git
   ```
   ```
   git clone https://github.com/AviatrixSystems/DirectConnectCostCalculator.git
  ```
- 8. ssh in to the Windows EC2 instance in us-east-1 using [Microsoft Desktop Client](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) and the appropriate credentials from AWS.
- 9. Download [pingplotter](https://www.pingplotter.com/) into the Windows instance. 
+ 9. ssh in to the Windows EC2 instance in us-east-1 using [Microsoft Desktop Client](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) and the appropriate credentials from AWS.
+ 10. Download [pingplotter](https://www.pingplotter.com/) into the Windows instance. 
  
 ## Destroy infrastructure [optional]
 
