@@ -1,5 +1,6 @@
 provider "aws" {
-  profile = "demo"
+  access_key = "XXXXXXXXXXXXXXXXXXXXX"
+  secret_key = "XXXXXXXXXXXXXXXXXXXXX"
 }
 
 module "vpc-west" {
