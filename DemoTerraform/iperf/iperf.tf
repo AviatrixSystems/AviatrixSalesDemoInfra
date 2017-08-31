@@ -10,7 +10,10 @@ variable "images" {
   type = "map"
   default = {
     us-east-1 = "ami-cd0f5cb6"
+    us-east-2 = "ami-10547475"
     us-west-1 = "ami-09d2fb69"
+    us-west-2 = "ami-6e1a0117"
+    ca-central-1 = "ami-b3d965d7"
   }
 }
 

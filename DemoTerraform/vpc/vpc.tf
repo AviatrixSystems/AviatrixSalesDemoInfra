@@ -46,7 +46,6 @@ resource "aws_route_table" "r" {
 resource "aws_subnet" "public" {
 	vpc_id = "${aws_vpc.main.id}"
 	cidr_block = "${var.cidr_block}.1.0/24"
-	availability_zone = "${var.region}a"
   tags {
     Name = "Public Subnet"
   }
@@ -73,7 +72,6 @@ resource "aws_route_table_association" "public" {
 resource "aws_subnet" "private" {
 	vpc_id = "${aws_vpc.main.id}"
 	cidr_block = "${var.cidr_block}.2.0/24"
-	availability_zone = "${var.region}a"
   tags {
     Name = "Private Subnet"
   }
