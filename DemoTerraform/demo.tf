@@ -1,26 +1,26 @@
 provider "aws" {
-  access_key = "XXXXXXXXXXXXXXXXXXXXX"
-  secret_key = "XXXXXXXXXXXXXXXXXXXXX"
+  access_key = "${var.access_key}"
+  secret_key = "${var.secret_key}"
 }
 
-module "vpc-west" {
+module "vpc-server" {
   source = "./vpc"
-  region  = "us-west-1"
+  region  = "${var.server_region}"
   cidr_block = "10.0"
 }
 
-module "vpc-east" {
+module "vpc-client" {
   source = "./vpc"
-  region   = "us-east-1"
+  region   = "${var.client_region}"
   cidr_block = "192.168"
 }
 
 module "iperf-server" {
   name = "Server"
-  region  = "us-west-1"
+  region  = "${var.server_region}"
   source = "./iperf"
-  vpc = "${module.vpc-west.vpc_id}"
-  subnet = "${module.vpc-west.public_subnet_id}"
+  vpc = "${module.vpc-server.vpc_id}"
+  subnet = "${module.vpc-server.public_subnet_id}"
   keypair = "AviatrixDemo"
   userdata = "${file("./iperf/server_userdata.txt")}"
 }
@@ -28,9 +28,9 @@ module "iperf-server" {
 module "iperf-client" {
   name = "Client"
   source = "./iperf"
-  region   = "us-east-1"
-  vpc = "${module.vpc-east.vpc_id}"
-  subnet = "${module.vpc-east.public_subnet_id}"
+  region   = "${var.client_region}"
+  vpc = "${module.vpc-client.vpc_id}"
+  subnet = "${module.vpc-client.public_subnet_id}"
   keypair = "AviatrixDemo"
   userdata = "${file("./iperf/client_userdata.txt")}"
 }
@@ -46,20 +46,21 @@ output "iperf-server-private-ip" {
 output "iperf-server-public-ip" {
     value = "${module.iperf-server.public-ip}"
 }
+
 output "iperf-client-public-ip" {
     value = "${module.iperf-client.public-ip}"
 }
 
 module "iam_roles" {
   source = "github.com/AviatrixSystems/terraform-modules.git/iam_roles"
-  region  = "us-west-1"
+  region  = "${var.server_region}"
 }
 
 module "aviatrixcontroller" {
   source = "github.com/AviatrixSystems/terraform-modules.git/controller"
-  region  = "us-west-1"
-  vpc = "${module.vpc-west.vpc_id}"
-  subnet = "${module.vpc-west.public_subnet_id}"
+  region  = "${var.server_region}"
+  vpc = "${module.vpc-server.vpc_id}"
+  subnet = "${module.vpc-server.public_subnet_id}"
   keypair = "AviatrixDemo"
   ec2role = "${module.iam_roles.aviatrix-role-ec2}"
 }
@@ -74,9 +75,9 @@ output "aviatrixcontroller-public-ip" {
 
 module "windows" {
   source = "./windows"
-  region   = "us-east-1"
-  vpc = "${module.vpc-east.vpc_id}"
-  subnet = "${module.vpc-east.public_subnet_id}"
+  region   = "${var.client_region}"
+  vpc = "${module.vpc-client.vpc_id}"
+  subnet = "${module.vpc-client.public_subnet_id}"
   keypair = "AviatrixDemo"
   userdata = "${file("./iperf/iperf_userdata.txt")}"
 }
