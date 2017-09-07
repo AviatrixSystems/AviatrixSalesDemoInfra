@@ -11,6 +11,12 @@ The terraform script will create the following:
   * One EC2 instance located in the public subnet, loaded with pip, iperf3 and an apache tomacat7 webserver (named Server).
   * One Aviatrix Controller EC2 Instance located in the public subnet (named AviatrixController).
 
+## New AWS Account
+If this a new AWS Account then - 
+1. Get the Aviatrix product from the [AWS Marketplace](https://aws.amazon.com/marketplace/fulfillment?productId=109cd06c-210a-4fa4-839b-708683c66dc6&ref_=dtl_psb_continue&region=us-east-1)
+2. Click on the Manual Launch with EC2 Console, API or CLI
+3. Click on the button that says "Accept Software Terms"
+
 ## Step by step procedure:
 1. Begin by [installing terraform](https://www.terraform.io/intro/getting-started/install.html)
 2. Clone the following repositories anywhere on your local machine. 
