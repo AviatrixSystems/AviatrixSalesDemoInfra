@@ -1,5 +1,5 @@
 # AviatrixSalesDemoInfra
-This repository creates AWS infrastructure for Aviatrix Sales Demo through Terraform.
+This terraform script creates an AWS environment for demoing real world Aviatrix usecases.
 
 ## Description
 The terraform script will create the following:
