@@ -51,6 +51,9 @@ If this a new AWS Account then -
 * If the Aviatrix Console ECS instance is already present on the AWS account then an error will occur.
 * If the shell states that specific EIPs already exist, delete the terraform.tfstate and terraform.tfstate.backup.
 * If the shell states that roles and policies exist even after deleting the .tfstate files then check to see if those roles and policies already exist and delete them from the AWS management console.
+* Remove the 'AviatrixDemo' keypair if it already exists. 
+* Remove the roles and policies if they already exist.
+
 ## Destroy infrastructure [optional]
 
 To destroy the infrastructure run the following command - 
