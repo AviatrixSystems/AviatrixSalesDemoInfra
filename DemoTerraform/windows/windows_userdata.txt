@@ -1,0 +1,5 @@
+<powershell>
+$client = new-object System.Net.WebClient
+$client.DownloadFile("https://www.pingplotter.com/downloads/pingplotter_install.exe","C:\Users\Administrator\Downloads\pingplotter_install.exe")
+C:\Users\Administrator\Downloads\pingplotter_install.exe /quiet
+</powershell>

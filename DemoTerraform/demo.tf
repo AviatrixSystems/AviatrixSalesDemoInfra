@@ -34,20 +34,13 @@ module "iperf-client" {
   userdata = "${file("./iperf/client_userdata.txt")}"
 }
 
-output "iperf-client-private-ip" {
-    value = "${module.iperf-client.private-ip}"
-}
-
-output "iperf-server-private-ip" {
-    value = "${module.iperf-server.private-ip}"
-}
-
-output "iperf-server-public-ip" {
-    value = "${module.iperf-server.public-ip}"
-}
-
-output "iperf-client-public-ip" {
-    value = "${module.iperf-client.public-ip}"
+module "windows" {
+  source = "./windows"
+  region   = "${var.client_region}"
+  vpc = "${module.vpc-client.vpc_id}"
+  subnet = "${module.vpc-client.public_subnet_id}"
+  keypair = "AviatrixDemo"
+  userdata = "${file("./windows/windows_userdata.txt")}"
 }
 
 module "iam_roles" {
@@ -64,19 +57,26 @@ module "aviatrixcontroller" {
   ec2role = "${module.iam_roles.aviatrix-role-ec2}"
 }
 
+output "iperf-client-private-ip" {
+    value = "${module.iperf-client.private-ip}"
+}
+
+output "iperf-server-private-ip" {
+    value = "${module.iperf-server.private-ip}"
+}
+
+output "iperf-server-public-ip" {
+    value = "${module.iperf-server.public-ip}"
+}
+
+output "iperf-client-public-ip" {
+    value = "${module.iperf-client.public-ip}"
+}
+
 output "aviatrixcontroller-private-ip" {
   value = "${module.aviatrixcontroller.private-ip}"
 }
 
 output "aviatrixcontroller-public-ip" {
   value = "${module.aviatrixcontroller.public-ip}"
-}
-
-module "windows" {
-  source = "./windows"
-  region   = "${var.client_region}"
-  vpc = "${module.vpc-client.vpc_id}"
-  subnet = "${module.vpc-client.public_subnet_id}"
-  keypair = "AviatrixDemo"
-  userdata = "${file("./iperf/iperf_userdata.txt")}"
 }

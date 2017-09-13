@@ -69,6 +69,7 @@ resource "aws_instance" "windows" {
      network_interface_id = "${aws_network_interface.eni-controller.id}"
      device_index = 0
   }
+  user_data = "${var.userdata}"
   tags {
     Name = "windows"
   }
